@@ -32,8 +32,9 @@ isolate a virtualenv the way you would on a local machine.
 ## 3. No database configured for tests (`62f7ba2`, `3de0485`)
 
 **Problem:** `app.py` reads `DATABASE_URI` from the environment
-(`app.py:22`) and falls back to `sqlite:///test.db` only when the variable
-is completely unset. Nothing in the workflow set `DATABASE_URI` or created
+(`app.py:23`) and, at the time, fell back to `sqlite:///test.db` only when
+the variable was completely unset (it now also falls back when it's empty —
+see [docker-run.md](docker-run.md)). Nothing in the workflow set `DATABASE_URI` or created
 the SQLite schema, so any test hitting the database failed — either with a
 connection/URL error or with "no such table" once a URI was supplied.
 

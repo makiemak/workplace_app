@@ -7,6 +7,8 @@ __pycache__/
 *.pyd
 
 .env
+instance/
+*.db
 
 .git/
 .gitignore
